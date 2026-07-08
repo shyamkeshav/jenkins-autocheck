@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building the application...in Main'
+                echo 'Building the application...in development'
                 // Example for Node.js: sh 'npm install'
                 // Example for Java: sh 'mvn clean package'
             }
@@ -19,7 +19,7 @@ pipeline {
         
         stage('Deploy') {
             steps {
-                echo 'Deploying the application to production...'
+                echo 'Deploying the application to local...'
                 // Example: sh './deploy.sh'
             }
         }
