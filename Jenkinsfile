@@ -1,23 +1,39 @@
 pipeline {
-    agent any
+    agent any 
+
     stages {
-        stage('Checkout') {
+        stage('Build') {
             steps {
-                checkout scm
+                echo 'Building the application...in Main'
+                // Example for Node.js: sh 'npm install'
+                // Example for Java: sh 'mvn clean package'
             }
         }
-        stage('Lint') {
+        
+        stage('Test') {
             steps {
-                echo 'Checking HTML syntax...'
-                // This is a simple mock lint check
-                sh 'grep -q "<html>" index.html || echo "Warning: Missing html tag"'
+                echo 'Running unit tests...'
+                // Example: sh 'npm test'
             }
         }
-        stage('Archive') {
+        
+        stage('Deploy') {
             steps {
-                echo 'Archiving artifacts...'
-                archiveArtifacts artifacts: 'index.html', fingerprint: true
+                echo 'Deploying the application to production...'
+                // Example: sh './deploy.sh'
             }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline execution complete.'
+        }
+        success {
+            echo 'The build was successful!'
+        }
+        failure {
+            echo 'The build failed. Check the logs.'
         }
     }
 }
