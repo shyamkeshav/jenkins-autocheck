@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building the application...in qa'
+                echo 'Building the application...in qa to test'
                 // Example for Node.js: sh 'npm install'
                 // Example for Java: sh 'mvn clean package'
             }
